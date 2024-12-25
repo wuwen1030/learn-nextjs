@@ -213,3 +213,89 @@ export function InvoicesTableSkeleton() {
     </div>
   );
 }
+
+export function CustomersTableSkeleton() {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="overflow-x-auto">
+        <div className="inline-block min-w-full align-middle">
+          <div className="overflow-hidden rounded-md bg-gray-50 dark:bg-gray-900 p-2 md:pt-0">
+            <div className="md:hidden">
+              {[...Array(5)].map((_, i) => (
+                <div
+                  key={i}
+                  className="mb-2 w-full rounded-md bg-white dark:bg-black p-4"
+                >
+                  <div className="flex items-center justify-between border-b dark:border-gray-800 pb-4">
+                    <div>
+                      <div className="mb-2 flex items-center">
+                        <div className="flex items-center gap-3">
+                          <div className="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800" />
+                          <div className="h-5 w-24 rounded bg-gray-100 dark:bg-gray-800" />
+                        </div>
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        <div className="h-4 w-32 rounded bg-gray-100 dark:bg-gray-800" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="pt-4 text-sm">
+                    <div className="h-4 w-32 rounded bg-gray-100 dark:bg-gray-800" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <table className="hidden min-w-full text-gray-900 dark:text-white md:table">
+              <thead className="rounded-lg text-left text-sm font-normal">
+                <tr>
+                  <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                    Name
+                  </th>
+                  <th scope="col" className="px-3 py-5 font-medium">
+                    Email
+                  </th>
+                  <th scope="col" className="px-3 py-5 font-medium">
+                    Total Invoices
+                  </th>
+                  <th scope="col" className="px-3 py-5 font-medium">
+                    Total Pending
+                  </th>
+                  <th scope="col" className="px-4 py-5 font-medium">
+                    Total Paid
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white dark:bg-black">
+                {[...Array(6)].map((_, i) => (
+                  <tr
+                    key={i}
+                    className="w-full border-b dark:border-gray-800 py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
+                  >
+                    <td className="whitespace-nowrap py-3 pl-6 pr-3">
+                      <div className="flex items-center gap-3">
+                        <div className="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800" />
+                        <div className="h-6 w-24 rounded bg-gray-100 dark:bg-gray-800" />
+                      </div>
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3">
+                      <div className="h-6 w-32 rounded bg-gray-100 dark:bg-gray-800" />
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3">
+                      <div className="h-6 w-16 rounded bg-gray-100 dark:bg-gray-800" />
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-3">
+                      <div className="h-6 w-16 rounded bg-gray-100 dark:bg-gray-800" />
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-3">
+                      <div className="h-6 w-16 rounded bg-gray-100 dark:bg-gray-800" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

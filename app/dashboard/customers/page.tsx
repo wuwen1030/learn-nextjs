@@ -2,6 +2,7 @@ import CustomersTable from "@/app/ui/customers/table";
 import { lusitana } from "@/app/ui/fonts";
 import Search from "@/app/ui/search";
 import { Suspense } from "react";
+import { CustomersTableSkeleton } from "@/app/ui/skeletons";
 
 export default async function Page(
   props: {
@@ -22,7 +23,7 @@ export default async function Page(
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search customers..." />
       </div>
-      <Suspense key={query}>
+      <Suspense key={query} fallback={<CustomersTableSkeleton />}>
         <CustomersTable query={query} />
       </Suspense>
     </div>
