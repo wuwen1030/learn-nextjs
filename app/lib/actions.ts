@@ -5,7 +5,7 @@ import { sql } from '@vercel/postgres';
 import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { date, z } from 'zod';
+import { z } from 'zod';
 
 const FormSchema = z.object({
   id: z.string(),
@@ -62,7 +62,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   } catch (error) {
     // If a database error occurs, return a more specific error.
     return {
-      message: 'Database Error: Failed to Create Invoice.',
+      message: 'Database Error: Failed to Create Invoice.' + error.message,
     };
   }
  
@@ -96,7 +96,7 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
       SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
       WHERE id = ${id}
     `;
-  } catch (error) {
+  } catch {
     return {
       message: 'Database Error: Failed to Update Invoice.',
     };
@@ -112,7 +112,7 @@ export async function deleteInvoice(id: string) {
     return {
       message: 'Database Invoice.',
     };
-  } catch (error) {
+  } catch {
     return {
       message: 'Database Error: Failed to Delete Invoice.',
     };
